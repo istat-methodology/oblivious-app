@@ -1,0 +1,28 @@
+auth:
+- auth_name: default
+  auth_type: signed_headers
+base_image: oblv_ubuntu_18_04_proxy
+build_args:
+- name: inbound
+  required_arg: false
+  type: integer
+meta:
+  author: franco
+  author_email: francamato@gmail.com
+  git: https://github.com/istat-methodology/oblivious-app.git
+  version: 0.1.0
+paths:
+- access: querier
+  path: /say_hello
+  short_description: querier
+roles:
+- role_auth: default
+  role_cardinality: 1
+  role_description: querier
+  role_name: querier
+traffic:
+  inbound:
+  - name: port
+    port: 80
+    type: tcp
+  outbound: []
